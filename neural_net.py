@@ -1,7 +1,6 @@
 #!/home/zeus/miniconda2/envs/py2/bin/python
 import torch
 from torch import autograd,nn,optim
-# import torch.nn as nn
 import torch.nn.functional as F
 
 batchSize = 5
@@ -48,5 +47,9 @@ for epoch in range(epochs):
     loss.backward()
     opt.step() #take the step
     if loss.data[0]<0.1:
-        print('trained successfully.')
+        print('\ntrained successfully.\n')
         break
+
+print('predicted data',str(predictedData.view(1,-1)).split('\n')[1])
+print('target data',str(target.view(1,-1)).split('\n')[1])
+print('loss',loss.data[0])
